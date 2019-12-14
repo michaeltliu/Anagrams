@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Console {
     public static void main(String[] args) throws IOException {
-        System.out.println("Enter the 6 letters one after another. Do not separate them with a delimiter.");
+        System.out.println("Enter the letters one after another. Do not separate them with a delimiter.");
         Scanner scan = new Scanner(System.in);
         String input = scan.nextLine();
         Solver solver = new Solver(input);

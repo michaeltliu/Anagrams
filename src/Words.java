@@ -8,6 +8,8 @@ public class Words {
         String path = "C:\\Users\\liumi\\IdeaProjects\\Anagrams\\data\\usa2.txt";
         BufferedReader scan = new BufferedReader(new FileReader(path));
         words = new HashSet<>();
+
+        // Reads dictionary into set
         String word;
         while ((word = scan.readLine()) != null) {
             words.add(word);

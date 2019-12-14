@@ -1,4 +1,3 @@
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 
@@ -24,7 +23,7 @@ public class Solver {
         possibilities.add("");
         remaining.add(letters);
 
-        // confirmed anagrams
+        // strings that are confirmed anagrams
         HashSet<String> anagrams = new HashSet<>();
         // phrases are added to this set once they use all available letters
         HashSet<String> completed = new HashSet<>();
@@ -32,10 +31,6 @@ public class Solver {
         while (!remaining.isEmpty()) {
             ArrayList<String> list = remaining.remove();
             String phrase = possibilities.remove();
-            System.out.println(phrase);
-            if (phrase.equals("bin")) {
-                System.out.println("XXX");
-            }
 
             if (words.isWord(phrase) && phrase.length() > 2) anagrams.add(phrase);
             for (int i = 0; i < list.size(); i ++) {
@@ -51,11 +46,14 @@ public class Solver {
             }
         }
 
+        // tests strings that used all available letters to see if they are real words
         for (String phrase : completed) {
             if (words.isWord(phrase)) anagrams.add(phrase);
         }
 
         ArrayList<String> ret = new ArrayList(anagrams);
+
+        // sorts the anagrams by descending length to maximize my SCOREEEE
         ret.sort(Comparator.comparingInt(String::length).reversed());
         return ret;
     }
