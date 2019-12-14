@@ -1,22 +1,24 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.HashSet;
-import java.util.Scanner;
 
 public class Words {
-    private static HashSet<String> words;
+    private HashSet<String> words;
 
-    public Words() throws FileNotFoundException {
-        File dictionary = new File("C:\\Users\\liumi\\Downloads\\usa2\\usa2.txt");
-        Scanner scan = new Scanner(dictionary);
+    public Words() throws IOException {
+        String path = "C:\\Users\\liumi\\IdeaProjects\\Anagrams\\data\\usa2.txt";
+        BufferedReader scan = new BufferedReader(new FileReader(path));
         words = new HashSet<>();
-        while (scan.hasNextLine()) {
-            String word = scan.nextLine();
+        String word;
+        while ((word = scan.readLine()) != null) {
             words.add(word);
         }
     }
 
-    public static boolean isWord(String w) {
+    public boolean isWord(String w) {
         return words.contains(w);
+    }
+
+    public HashSet<String> getWords() {
+        return words;
     }
 }
